@@ -44,7 +44,7 @@ if (DEV) {
 }
 
 /**
- * Returns an ['AbortSignal'](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that aborts when the current [derived](https://svelte.dev/docs/svelte/$derived) or [effect](https://svelte.dev/docs/svelte/$effect) re-runs or is destroyed.
+ * Returns an [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that aborts when the current [derived](https://svelte.dev/docs/svelte/$derived) or [effect](https://svelte.dev/docs/svelte/$effect) re-runs or is destroyed.
  *
  * Must be called while a derived or effect is running.
  *
@@ -55,7 +55,7 @@ if (DEV) {
  * 	let { id } = $props();
  *
  * 	async function getData(id) {
- * 		const response = await fetch('/items/${id}', {
+ * 		const response = await fetch(`/items/${id}`, {
  * 			signal: getAbortSignal()
  * 		});
  *
@@ -75,14 +75,14 @@ export function getAbortSignal() {
 }
 
 /**
- * 'onMount', like ['$effect'](https://svelte.dev/docs/svelte/$effect), schedules a function to run as soon as the component has been mounted to the DOM.
- * Unlike '$effect', the provided function only runs once.
+ * `onMount`, like [`$effect`](https://svelte.dev/docs/svelte/$effect), schedules a function to run as soon as the component has been mounted to the DOM.
+ * Unlike `$effect`, the provided function only runs once.
  *
  * It must be called during the component's initialisation (but doesn't need to live _inside_ the component;
- * it can be called from an external module). If a function is returned _synchronously_ from 'onMount',
+ * it can be called from an external module). If a function is returned _synchronously_ from `onMount`,
  * it will be called when the component is unmounted.
  *
- * 'onMount' functions do not run during [server-side rendering](https://svelte.dev/docs/svelte/svelte-server#render).
+ * `onMount` functions do not run during [server-side rendering](https://svelte.dev/docs/svelte/svelte-server#render).
  *
  * @template T
  * @param {() => NotFunction<T> | Promise<NotFunction<T>> | (() => any)} fn
@@ -106,7 +106,7 @@ export function onMount(fn) {
 /**
  * Schedules a callback to run immediately before the component is unmounted.
  *
- * Out of 'onMount', 'beforeUpdate', 'afterUpdate' and 'onDestroy', this is the
+ * Out of `onMount`, `beforeUpdate`, `afterUpdate` and `onDestroy`, this is the
  * only one that runs inside a server-side component.
  *
  * @param {() => any} fn
@@ -133,24 +133,24 @@ function create_custom_event(type, detail, { bubbles = false, cancelable = false
 
 /**
  * Creates an event dispatcher that can be used to dispatch [component events](https://svelte.dev/docs/svelte/legacy-on#Component-events).
- * Event dispatchers are functions that can take two arguments: 'name' and 'detail'.
+ * Event dispatchers are functions that can take two arguments: `name` and `detail`.
  *
- * Component events created with 'createEventDispatcher' create a
+ * Component events created with `createEventDispatcher` create a
  * [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent).
  * These events do not [bubble](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture).
- * The 'detail' argument corresponds to the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+ * The `detail` argument corresponds to the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
  * property and can contain any type of data.
  *
- * The event dispatcher can be typed to narrow the allowed event names and the type of the 'detail' argument:
- * '''ts
+ * The event dispatcher can be typed to narrow the allowed event names and the type of the `detail` argument:
+ * ```ts
  * const dispatch = createEventDispatcher<{
  *  loaded: null; // does not take a detail argument
  *  change: string; // takes a detail argument of type string, which is required
  *  optional: number | null; // takes an optional detail argument of type number
  * }>();
- * '''
+ * ```
  *
- * @deprecated Use callback props and/or the '$host()' rune instead — see [migration guide](https://svelte.dev/docs/svelte/v5-migration-guide#Event-changes-Component-events)
+ * @deprecated Use callback props and/or the `$host()` rune instead — see [migration guide](https://svelte.dev/docs/svelte/v5-migration-guide#Event-changes-Component-events)
  * @template {Record<string, any>} [EventMap = any]
  * @returns {EventDispatcher<EventMap>}
  */
@@ -189,11 +189,11 @@ export function createEventDispatcher() {
 /**
  * Schedules a callback to run immediately before the component is updated after any state change.
  *
- * The first time the callback runs will be before the initial 'onMount'.
+ * The first time the callback runs will be before the initial `onMount`.
  *
- * In runes mode use '$effect.pre' instead.
+ * In runes mode use `$effect.pre` instead.
  *
- * @deprecated Use ['$effect.pre'](https://svelte.dev/docs/svelte/$effect#$effect.pre) instead
+ * @deprecated Use [`$effect.pre`](https://svelte.dev/docs/svelte/$effect#$effect.pre) instead
  * @param {() => void} fn
  * @returns {void}
  */
@@ -212,11 +212,11 @@ export function beforeUpdate(fn) {
 /**
  * Schedules a callback to run immediately after the component has been updated.
  *
- * The first time the callback runs will be after the initial 'onMount'.
+ * The first time the callback runs will be after the initial `onMount`.
  *
- * In runes mode use '$effect' instead.
+ * In runes mode use `$effect` instead.
  *
- * @deprecated Use ['$effect'](https://svelte.dev/docs/svelte/$effect) instead
+ * @deprecated Use [`$effect`](https://svelte.dev/docs/svelte/$effect) instead
  * @param {() => void} fn
  * @returns {void}
  */
