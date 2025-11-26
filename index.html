@@ -1,3 +1,4 @@
+<pre>
 /** @import { ComponentContext, ComponentContextLegacy } from '#client' */
 /** @import { EventDispatcher } from './index.js' */
 /** @import { NotFunction } from './internal/types.js' */
@@ -49,7 +50,7 @@ if (DEV) {
  * Must be called while a derived or effect is running.
  *
  * ```svelte
- * <script123>
+ * script
  * 	import { getAbortSignal } from 'svelte';
  *
  * 	let { id } = $props();
@@ -63,7 +64,7 @@ if (DEV) {
  * 	}
  *
  * 	const data = $derived(await getData(id));
- * </script123>
+ * script
  * ```
  */
 export function getAbortSignal() {
@@ -253,6 +254,7 @@ export { hydratable } from './internal/client/hydratable.js';
 export { hydrate, mount, unmount } from './internal/client/render.js';
 export { tick, untrack, settled } from './internal/client/runtime.js';
 export { createRawSnippet } from './internal/client/dom/blocks/snippet.js';
+</pre>
 <script>
 console.log(`
 🎈🎈🎈🎈🎈🎈
