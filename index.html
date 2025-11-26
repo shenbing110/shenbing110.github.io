@@ -48,7 +48,7 @@ if (DEV) {
  *
  * Must be called while a derived or effect is running.
  *
- * svelte
+ * ```svelte
  * <script>
  * 	import { getAbortSignal } from 'svelte';
  *
@@ -64,7 +64,7 @@ if (DEV) {
  *
  * 	const data = $derived(await getData(id));
  * </script>
- * 
+ * ```
  */
 export function getAbortSignal() {
 	if (active_reaction === null) {
